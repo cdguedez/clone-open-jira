@@ -15,6 +15,7 @@ class MyDocument extends Document {
           href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap"
         />
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+        <meta name="viewport" content="initial-scale=1, width=device-width" />
       </Head>
       <body>
         <Main />
