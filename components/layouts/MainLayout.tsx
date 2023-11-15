@@ -1,7 +1,7 @@
 import React, { type FC } from 'react'
 import Head from 'next/head'
 import { Box } from '@mui/material'
-import { Navbar } from '../ui'
+import { Navbar, Sidebar } from '../ui'
 
 interface MainLayoutProps {
   title?: string
@@ -15,6 +15,7 @@ export const MainLayout: FC<MainLayoutProps> = ({ title = 'Open Jira Software', 
         <title>{ title }</title>
       </Head>
       <Navbar />
+      <Sidebar />
       <Box component='main' sx={{ padding: '1.2rem 2rem' }}>
         { children }
       </Box>
