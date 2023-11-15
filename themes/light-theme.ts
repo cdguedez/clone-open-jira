@@ -14,6 +14,7 @@ export const lightTheme = createTheme({
       main: red[500]
     }
   },
+
   typography: {
     h1: {
       fontSize: '4rem'
@@ -32,6 +33,19 @@ export const lightTheme = createTheme({
     },
     h6: {
       fontSize: '1rem'
+    }
+  },
+
+  components: {
+    MuiAppBar: {
+      defaultProps: {
+        elevation: 0
+      },
+      styleOverrides: {
+        root: {
+          backgroundColor: lightBlue[500]
+        }
+      }
     }
   }
 })
