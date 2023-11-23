@@ -38,8 +38,35 @@ export const darkTheme = createTheme({
 
   components: {
     MuiAppBar: {
+      styleOverrides: {
+        colorPrimary: {
+          backgroundColor: blueGrey[500]
+        }
+      },
       defaultProps: {
         elevation: 0
+      }
+    },
+    MuiDrawer: {
+      styleOverrides: {
+        paper: {
+          backgroundColor: blueGrey[500],
+          color: 'white'
+        }
+      }
+    },
+    MuiLink: {
+      styleOverrides: {
+        root: {
+          textDecoration: 'none'
+        }
+      }
+    },
+    MuiListItemText: {
+      styleOverrides: {
+        primary: {
+          color: 'white'
+        }
       }
     }
   }

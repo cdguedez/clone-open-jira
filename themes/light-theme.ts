@@ -5,7 +5,7 @@ export const lightTheme = createTheme({
   palette: {
     mode: 'light',
     background: {
-      default: lightBlue[100]
+      default: lightBlue[50]
     },
     secondary: {
       main: blueGrey[300]
@@ -38,12 +38,48 @@ export const lightTheme = createTheme({
 
   components: {
     MuiAppBar: {
+      styleOverrides: {
+        colorPrimary: {
+          backgroundColor: lightBlue[500]
+        }
+      },
       defaultProps: {
         elevation: 0
-      },
+      }
+    },
+    MuiDrawer: {
+      styleOverrides: {
+        paper: {
+          backgroundColor: lightBlue[500],
+          color: 'white'
+        }
+      }
+    },
+    MuiLink: {
       styleOverrides: {
         root: {
-          backgroundColor: lightBlue[500]
+          textDecoration: 'none'
+        }
+      }
+    },
+    MuiListItemText: {
+      styleOverrides: {
+        primary: {
+          color: 'white'
+        }
+      }
+    },
+    MuiListItemIcon: {
+      styleOverrides: {
+        root: {
+          color: 'white'
+        }
+      }
+    },
+    MuiIconButton: {
+      styleOverrides: {
+        root: {
+          color: 'white'
         }
       }
     }

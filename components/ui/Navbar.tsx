@@ -1,17 +1,32 @@
-import React from 'react'
+import React, { type FC, useContext } from 'react'
 import { AppBar, IconButton, Toolbar, Typography } from '@mui/material'
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined'
+import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined'
+import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined'
 
-export const Navbar = () => {
+import { UIContext } from '@/context/ui/UIContext'
+
+interface NavbarProps {
+  handleOpenSidebar: () => void
+}
+
+export const Navbar: FC<NavbarProps> = ({ handleOpenSidebar }) => {
+  const { toggleTheme, theme } = useContext(UIContext)
+
+  console.log()
+
   return (
-    <AppBar position='sticky' component='nav'>
+    <AppBar position='static' component='nav' color='primary'>
       <Toolbar>
-        <IconButton size='medium' edge='start'>
+        <IconButton size='large' edge='start' aria-label='menu' onClick={handleOpenSidebar} sx={{ mr: 2 }}>
           <MenuOutlinedIcon />
         </IconButton>
-        <Typography variant='h4'>
-          OpenJira
+        <Typography variant='h4' component='span' sx={{ flexGrow: 1 }}>
+          openJiraCG
         </Typography>
+        <IconButton size='medium' edge='end' onClick={toggleTheme}>
+          { theme.palette.mode === 'dark' ? <LightModeOutlinedIcon /> : <DarkModeOutlinedIcon /> }
+        </IconButton>
       </Toolbar>
     </AppBar>
   )
