@@ -1,4 +1,5 @@
 import React, { type FC, useContext } from 'react'
+
 import { AppBar, IconButton, Toolbar, Typography } from '@mui/material'
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined'
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined'
@@ -12,8 +13,6 @@ interface NavbarProps {
 
 export const Navbar: FC<NavbarProps> = ({ handleOpenSidebar }) => {
   const { toggleTheme, theme } = useContext(UIContext)
-
-  console.log()
 
   return (
     <AppBar position='static' component='nav' color='primary'>
