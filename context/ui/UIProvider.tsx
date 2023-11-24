@@ -7,10 +7,14 @@ interface UIProviderProps {
 
 export interface UIState {
   sidebarOpen: boolean
+  theme: any
+  toggleTheme: () => void
 }
 
 const UI_INITIAL_STATE: UIState = {
-  sidebarOpen: false
+  sidebarOpen: false,
+  theme: {} as any,
+  toggleTheme: () => {}
 }
 
 export const UIProvider = ({ children }: UIProviderProps) => {
@@ -18,7 +22,9 @@ export const UIProvider = ({ children }: UIProviderProps) => {
 
   return (
     <UIContext.Provider value={{
-      sidebarOpen: false
+      sidebarOpen: false,
+      theme: {} as any,
+      toggleTheme: () => {}
     }}>
       { children }
     </UIContext.Provider>

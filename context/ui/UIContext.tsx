@@ -9,6 +9,6 @@ interface UIContextProps {
 
 export const UIContext = createContext<UIContextProps>({
   sidebarOpen: false,
-  theme: {},
+  theme: {} as Theme,
   toggleTheme: () => {}
-} as UIContextProps)
+})
