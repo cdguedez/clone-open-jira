@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react'
+import React, { type FC, useReducer } from 'react'
 import { UIContext, uiRecuder } from './'
 
 interface UIProviderProps {
@@ -7,25 +7,25 @@ interface UIProviderProps {
 
 export interface UIState {
   sidebarOpen: boolean
-  theme: any
-  toggleTheme: () => void
 }
 
 const UI_INITIAL_STATE: UIState = {
-  sidebarOpen: false,
-  theme: {} as any,
-  toggleTheme: () => {}
+  sidebarOpen: false
 }
 
-export const UIProvider = ({ children }: UIProviderProps) => {
+export const UIProvider: FC<UIProviderProps> = ({ children }) => {
   const [state, dispatch] = useReducer(uiRecuder, UI_INITIAL_STATE)
 
+  const openSideBar = () => {
+    dispatch({ type: 'OPEN_SIDEBAR' })
+  }
+
+  const closeSideBar = () => {
+    dispatch({ type: 'CLOSE_SIDEBAR' })
+  }
+
   return (
-    <UIContext.Provider value={{
-      sidebarOpen: false,
-      theme: {} as any,
-      toggleTheme: () => {}
-    }}>
+    <UIContext.Provider value={{ ...state, openSideBar, closeSideBar }}>
       { children }
     </UIContext.Provider>
   )

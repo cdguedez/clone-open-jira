@@ -1,7 +1,8 @@
-import { type FC } from 'react'
+import { useContext } from 'react'
 import NextLink from 'next/link'
 import { Dns, People, PermMedia, Public } from '@mui/icons-material'
 import { Box, Drawer, List, ListItemButton, ListItemIcon, ListItemText, Typography, Link as MUILink } from '@mui/material'
+import { UIContext } from '@/context/ui'
 
 const menuItems = [
   { icon: <People />, label: 'Dashboard', path: '/dashboard' },
@@ -10,17 +11,14 @@ const menuItems = [
   { icon: <Public />, label: 'Hosting', path: '/hosting' }
 ]
 
-interface SidebarProps {
-  isOpen: boolean
-  handleCloseSidebar: () => void
-}
+export const Sidebar = () => {
+  const { sidebarOpen, closeSideBar } = useContext(UIContext)
 
-export const Sidebar: FC<SidebarProps> = ({ isOpen, handleCloseSidebar }) => {
   return (
     <Drawer
       anchor='left'
-      open={isOpen}
-      onClose={handleCloseSidebar}
+      open={sidebarOpen}
+      onClose={closeSideBar}
       color='primary'
     >
       <Box sx={{ width: 300 }} component='aside'>
