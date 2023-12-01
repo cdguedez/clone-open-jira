@@ -14,37 +14,28 @@ export interface EntriesState {
 }
 
 const ENTRIES_INITIAL_STATE: EntriesState = {
-  entries: [
-    {
-      _id: uuidv4(),
-      title: 'First entry',
-      description: 'This is the first entry',
-      status: 'completed',
-      createdAt: Date.now()
-    },
-    {
-      _id: uuidv4(),
-      title: 'Second entry',
-      description: 'This is the second entry',
-      status: 'in-progress',
-      createdAt: Date.now() - 1000
-    },
-    {
-      _id: uuidv4(),
-      title: 'Third entry',
-      description: 'This is the third entry',
-      status: 'completed',
-      createdAt: Date.now() - 3000
-    }
-  ]
+  entries: []
 }
 
 export const EntriesProvider = ({ children }: EntriesProviderProps) => {
   const [state, dispatch] = useReducer(entriesReducer, ENTRIES_INITIAL_STATE)
 
+  const addNewEntry = (description: string, title: string) => {
+    const newEntry: Entry = {
+      _id: uuidv4(),
+      title,
+      description,
+      createdAt: Date.now(),
+      status: 'pending'
+    }
+
+    dispatch({ type: 'ADD_ENTRIES', payload: newEntry })
+  }
+
   return (
     <EntriesContext.Provider value={{
-      ...state
+      ...state,
+      addNewEntry
     }}>
       { children }
     </EntriesContext.Provider>

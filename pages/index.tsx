@@ -2,7 +2,7 @@ import { type NextPage } from 'next'
 import { Card, CardHeader, Grid } from '@mui/material'
 
 import { MainLayout } from '@/components/layouts'
-import { EntryList } from '@/components/ui'
+import { EntryList, NewEntry } from '@/components/ui'
 
 const Home: NextPage = () => {
   return (
@@ -11,6 +11,7 @@ const Home: NextPage = () => {
           <Grid item xs={12} md={4}>
             <Card sx={{ height: 'calc(100vh - 100px)' }}>
               <CardHeader title='Pendientes' />
+              <NewEntry />
               <EntryList status='pending' />
             </Card>
           </Grid>
