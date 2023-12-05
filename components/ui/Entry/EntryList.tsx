@@ -15,7 +15,11 @@ export const EntryList = ({ status }: EntryListProps) => {
 
   return (
     <div>
-      <Paper sx={{ height: 'calc(100vh - 200px)', overflow: 'scroll', backgroundColor: 'transparent', padding: '2px 6px' }}>
+      <Paper sx={{
+        height: 'calc(100vh - 200px)',
+        overflow: 'auto',
+        backgroundColor: 'transparent'
+      }}>
         <List sx={{ opacity: 1 }}>
           {entriesRenderByStatus.map(entry => (
             <EntryCard key={entry._id} entry={entry} />

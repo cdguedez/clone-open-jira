@@ -1,22 +1,27 @@
-import { Card, CardActionArea, CardActions, CardContent, CardHeader, Typography } from '@mui/material'
+import { useState } from 'react'
+
+import { Card, CardContent, CardHeader, Typography } from '@mui/material'
+import IconButton from '@mui/material/IconButton'
+import MoreVertIcon from '@mui/icons-material/MoreVert'
+
 import { type Entry } from '@/interfaces'
+import { DateTime } from 'luxon'
 
 interface EntryCardProps {
   entry: Entry
 }
 
 export const EntryCard = ({ entry }: EntryCardProps) => {
+  const [expandMore, setExpandMore] = useState(false)
+
+  const handleClickExpand = () => { setExpandMore(!expandMore) }
+
   return (
     <Card sx={{ marginBottom: 1 }}>
-      <CardActionArea>
-        <CardHeader title={entry.title}></CardHeader>
+        <CardHeader subheader={DateTime.fromISO(entry.createdAt).setLocale('es').toFormat('dd LLL, yyyy')} action={<IconButton onClick={handleClickExpand}><MoreVertIcon /></IconButton>} title={entry.title} />
         <CardContent>
           <Typography sx={{ whiteSpace: 'pre-line' }} >{entry.description}</Typography>
         </CardContent>
-        <CardActions sx={{ display: 'flex', justifyContent: 'end', paddingRight: 2 }}>
-          <Typography variant='body2' >Hace 30 min</Typography>
-        </CardActions>
-      </CardActionArea>
     </Card>
   )
 }

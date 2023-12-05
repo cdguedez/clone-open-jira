@@ -3,15 +3,15 @@ import { type ChangeEvent, useState, useContext } from 'react'
 
 export const useNewEntry = () => {
   const [isOpenModal, setIsOpenModal] = useState(false)
-  const [inputValue, setInputValue] = useState({
+  const [inputValues, setInputValues] = useState({
     title: '',
     description: ''
   })
   const { addNewEntry } = useContext(EntriesContext)
 
   const handleChangeInput = ({ target }: ChangeEvent<HTMLInputElement>) => {
-    setInputValue({
-      ...inputValue,
+    setInputValues({
+      ...inputValues,
       [target.name]: target.value
     })
   }
@@ -25,15 +25,19 @@ export const useNewEntry = () => {
   }
 
   const handleSUbmit = () => {
-    const { description, title } = inputValue
+    const { description, title } = inputValues
     if (title === '' || description === '') return
     addNewEntry(description, title)
     handleCloseNewEntry()
+    setInputValues({
+      title: '',
+      description: ''
+    })
   }
 
   return {
     isOpenModal,
-    inputValue,
+    inputValues,
     handleChangeInput,
     handleCloseNewEntry,
     handleOpenNewEntry,

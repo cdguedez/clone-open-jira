@@ -1,9 +1,9 @@
 import { useReducer } from 'react'
 
 import { v4 as uuidv4 } from 'uuid'
-
-import { EntriesContext, entriesReducer } from './'
+import { DateTime } from 'luxon'
 import { type Entry } from '@/interfaces'
+import { EntriesContext, entriesReducer } from './'
 
 interface EntriesProviderProps {
   children: React.ReactNode
@@ -25,17 +25,23 @@ export const EntriesProvider = ({ children }: EntriesProviderProps) => {
       _id: uuidv4(),
       title,
       description,
-      createdAt: Date.now(),
+      // createdAt: DateTime.now().toLocaleString(DateTime.DATETIME_FULL, { locale: 'es-ES' }),
+      createdAt: DateTime.now().toISO(),
       status: 'pending'
     }
 
     dispatch({ type: 'ADD_ENTRIES', payload: newEntry })
   }
 
+  const removerEntry = (id: string) => {
+    dispatch({ type: 'REMOVE_ENTRIES', payload: { id } })
+  }
+
   return (
     <EntriesContext.Provider value={{
       ...state,
-      addNewEntry
+      addNewEntry,
+      removerEntry
     }}>
       { children }
     </EntriesContext.Provider>

@@ -1,13 +1,15 @@
 import { Box, Button, Modal, TextField } from '@mui/material'
+
 import SaveOutlinedIcon from '@mui/icons-material/SaveOutlined'
 import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined'
 import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined'
+
 import { useNewEntry } from './hooks'
 
 export const NewEntry = () => {
   const {
     isOpenModal,
-    inputValue,
+    inputValues,
     handleChangeInput,
     handleCloseNewEntry,
     handleOpenNewEntry,
@@ -41,7 +43,7 @@ export const NewEntry = () => {
                 <TextField
                   label='Title of New Entry'
                   name='title'
-                  value={inputValue.title}
+                  value={inputValues.title}
                   onChange={handleChangeInput}
                   fullWidth
                   sx={{ marginBottom: 2 }}
@@ -53,7 +55,7 @@ export const NewEntry = () => {
                   name='description'
                   sx={{ marginTop: 2, marginBottom: 2 }}
                   autoFocus
-                  value={inputValue.description}
+                  value={inputValues.description}
                   onChange={handleChangeInput}
                   multiline
                   rows={4}
