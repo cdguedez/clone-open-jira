@@ -68,6 +68,25 @@ export const darkTheme = createTheme({
           color: 'white'
         }
       }
+    },
+    MuiPaper: {
+      styleOverrides: {
+        root: {
+          color: 'white',
+          '&::-webkit-scrollbar': {
+            width: '.4rem'
+          },
+          '&::-webkit-scrollbar-track': {
+            background: blueGrey[500]
+          },
+          '&::-webkit-scrollbar-thumb': {
+            background: lightBlue[300]
+          },
+          '&::-webkit-scrollbar-thumb:hover': {
+            background: '#555'
+          }
+        }
+      }
     }
   }
 
