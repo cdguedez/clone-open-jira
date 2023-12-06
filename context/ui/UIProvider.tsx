@@ -37,7 +37,7 @@ export const UIProvider: FC<UIProviderProps> = ({ children }) => {
   }
 
   const endDragging = () => {
-    dispatch({ type: 'START_DRAGGING' })
+    dispatch({ type: 'STOP_DRAGGING' })
   }
 
   return (
