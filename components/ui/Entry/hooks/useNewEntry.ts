@@ -3,7 +3,6 @@ import { UIContext } from '@/context/ui'
 import { type ChangeEvent, useState, useContext } from 'react'
 
 export const useNewEntry = () => {
-  const [isOpenModal, setIsOpenModal] = useState(false)
   const [inputValues, setInputValues] = useState({
     title: '',
     description: ''
@@ -19,11 +18,10 @@ export const useNewEntry = () => {
   }
 
   const handleCloseNewEntry = () => {
-    setIsOpenModal(false)
+    openNewEntry(false)
   }
 
   const handleOpenNewEntry = () => {
-    setIsOpenModal(true)
     openNewEntry(true)
   }
 
@@ -35,10 +33,10 @@ export const useNewEntry = () => {
       title: '',
       description: ''
     })
+    openNewEntry(false)
   }
 
   return {
-    isOpenModal,
     inputValues,
     handleChangeInput,
     handleCloseNewEntry,
