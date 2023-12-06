@@ -8,11 +8,13 @@ interface UIProviderProps {
 export interface UIState {
   sidebarOpen: boolean
   isAddEntry: boolean
+  isDragging: boolean
 }
 
 const UI_INITIAL_STATE: UIState = {
   sidebarOpen: false,
-  isAddEntry: false
+  isAddEntry: false,
+  isDragging: false
 }
 
 export const UIProvider: FC<UIProviderProps> = ({ children }) => {
@@ -30,8 +32,16 @@ export const UIProvider: FC<UIProviderProps> = ({ children }) => {
     dispatch({ type: 'ADD_NEW_ENTRY', payload: status })
   }
 
+  const startDragging = () => {
+    dispatch({ type: 'START_DRAGGING' })
+  }
+
+  const endDragging = () => {
+    dispatch({ type: 'START_DRAGGING' })
+  }
+
   return (
-    <UIContext.Provider value={{ ...state, openSideBar, closeSideBar, openNewEntry }}>
+    <UIContext.Provider value={{ ...state, openSideBar, closeSideBar, openNewEntry, startDragging, endDragging }}>
       { children }
     </UIContext.Provider>
   )
