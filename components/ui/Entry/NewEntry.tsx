@@ -1,14 +1,16 @@
+import { useContext } from 'react'
 import { Box, Button, Modal, TextField } from '@mui/material'
 
 import SaveOutlinedIcon from '@mui/icons-material/SaveOutlined'
 import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined'
 import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined'
 
+import { UIContext } from '@/context/ui'
+
 import { useNewEntry } from './hooks'
 
 export const NewEntry = () => {
   const {
-    isOpenModal,
     inputValues,
     handleChangeInput,
     handleCloseNewEntry,
@@ -16,8 +18,10 @@ export const NewEntry = () => {
     handleSUbmit
   } = useNewEntry()
 
+  const { isAddEntry } = useContext(UIContext)
+
   return (
-    <Box sx={{ marginBottom: 2, paddingX: 1 }}>
+  <Box sx={{ marginBottom: 2, paddingX: 1 }}>
 
       <Button
         onClick={handleOpenNewEntry}
@@ -27,8 +31,8 @@ export const NewEntry = () => {
       >
         New Entry
       </Button>
-      { isOpenModal && (
-          <Modal open={isOpenModal} onClose={handleCloseNewEntry}>
+      { isAddEntry && (
+          <Modal open={isAddEntry} onClose={() => { console.log(true) }}>
             <Box sx={{
               position: 'absolute',
               top: '50%',

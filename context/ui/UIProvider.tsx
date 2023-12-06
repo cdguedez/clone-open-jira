@@ -7,10 +7,12 @@ interface UIProviderProps {
 
 export interface UIState {
   sidebarOpen: boolean
+  isAddEntry: boolean
 }
 
 const UI_INITIAL_STATE: UIState = {
-  sidebarOpen: false
+  sidebarOpen: false,
+  isAddEntry: false
 }
 
 export const UIProvider: FC<UIProviderProps> = ({ children }) => {
@@ -24,8 +26,12 @@ export const UIProvider: FC<UIProviderProps> = ({ children }) => {
     dispatch({ type: 'CLOSE_SIDEBAR' })
   }
 
+  const openNewEntry = (status: boolean) => {
+    dispatch({ type: 'ADD_NEW_ENTRY', payload: status })
+  }
+
   return (
-    <UIContext.Provider value={{ ...state, openSideBar, closeSideBar }}>
+    <UIContext.Provider value={{ ...state, openSideBar, closeSideBar, openNewEntry }}>
       { children }
     </UIContext.Provider>
   )

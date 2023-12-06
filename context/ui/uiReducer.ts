@@ -1,6 +1,6 @@
 import { type UIState } from './'
 
-type UIActionType = | { type: 'OPEN_SIDEBAR' } | { type: 'CLOSE_SIDEBAR' }
+type UIActionType = | { type: 'OPEN_SIDEBAR' } | { type: 'CLOSE_SIDEBAR' } | { type: 'ADD_NEW_ENTRY', payload: boolean }
 
 export const uiRecuder = (state: UIState, action: UIActionType): UIState => {
   switch (action.type) {
@@ -13,6 +13,11 @@ export const uiRecuder = (state: UIState, action: UIActionType): UIState => {
       return {
         ...state,
         sidebarOpen: false
+      }
+    case 'ADD_NEW_ENTRY':
+      return {
+        ...state,
+        isAddEntry: action.payload
       }
     default:
       return state
