@@ -1,6 +1,6 @@
 import { type UIState } from './'
 
-type UIActionType = | { type: 'OPEN_SIDEBAR' } | { type: 'CLOSE_SIDEBAR' } | { type: 'ADD_NEW_ENTRY', payload: boolean } | { type: 'START_DRAGGING' } | { type: 'STOP_DRAGGING' }
+type UIActionType = | { type: 'OPEN_SIDEBAR' } | { type: 'CLOSE_SIDEBAR' } | { type: 'ADD_NEW_ENTRY', payload: boolean } | { type: 'START_DRAGGING' } | { type: 'STOP_DRAGGING' } | { type: 'TOGGLE_THEME' }
 
 export const uiRecuder = (state: UIState, action: UIActionType): UIState => {
   switch (action.type) {
@@ -28,6 +28,11 @@ export const uiRecuder = (state: UIState, action: UIActionType): UIState => {
       return {
         ...state,
         isDragging: false
+      }
+    case 'TOGGLE_THEME':
+      return {
+        ...state,
+        theme: state.theme === 'dark' ? 'light' : 'dark'
       }
     default:
       return state

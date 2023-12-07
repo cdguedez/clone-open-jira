@@ -1,6 +1,7 @@
 import { createContext } from 'react'
 
 interface UIContextProps {
+  theme: 'light' | 'dark'
   sidebarOpen: boolean
   isAddEntry: boolean
 
@@ -13,6 +14,8 @@ interface UIContextProps {
 
   startDragging: () => void
   endDragging: () => void
+
+  toggleTheme: () => void
 }
 
 export const UIContext = createContext({} as UIContextProps)

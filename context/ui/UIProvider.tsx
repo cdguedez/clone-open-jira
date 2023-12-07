@@ -6,12 +6,14 @@ interface UIProviderProps {
 }
 
 export interface UIState {
+  theme: 'light' | 'dark'
   sidebarOpen: boolean
   isAddEntry: boolean
   isDragging: boolean
 }
 
 const UI_INITIAL_STATE: UIState = {
+  theme: 'dark',
   sidebarOpen: false,
   isAddEntry: false,
   isDragging: false
@@ -40,8 +42,22 @@ export const UIProvider: FC<UIProviderProps> = ({ children }) => {
     dispatch({ type: 'STOP_DRAGGING' })
   }
 
+  const toggleTheme = () => {
+    dispatch({ type: 'TOGGLE_THEME' })
+  }
+
   return (
-    <UIContext.Provider value={{ ...state, openSideBar, closeSideBar, openNewEntry, startDragging, endDragging }}>
+    <UIContext.Provider
+      value={{
+        ...state,
+        openSideBar,
+        closeSideBar,
+        openNewEntry,
+        startDragging,
+        endDragging,
+        toggleTheme
+      }}
+    >
       { children }
     </UIContext.Provider>
   )
