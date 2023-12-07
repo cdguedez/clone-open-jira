@@ -2,19 +2,9 @@
 
 ## Getting Started
 
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-```
-
-## How to use
-
 ```bash
 # Clone this repository
-$ git clone
+$ git clone https://github.com/cdguedez/clone-open-jira.git app-open-jira-with-nextjs
 # Go into the repository
 $ cd app-open-jira-with-nextjs
 # Install dependencies
