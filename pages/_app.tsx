@@ -4,15 +4,13 @@ import type { AppProps } from 'next/app'
 
 import { UIProvider } from '@/context/ui'
 import { EntriesProvider } from '@/context/entries'
-import { useTheme } from '@/hooks/useTheme'
+import { darkTheme } from '@/themes'
 
 export default function App ({ Component, pageProps }: AppProps) {
-  const { theme } = useTheme()
-
   return (
       <EntriesProvider>
         <UIProvider>
-          <ThemeProvider theme={ theme }>
+          <ThemeProvider theme={ darkTheme }>
             <CssBaseline />
             <Component {...pageProps} />
           </ThemeProvider>
