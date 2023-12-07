@@ -30,10 +30,17 @@ $ npm run dev
 $ docker-compose up -d
 ```
 
+## URL Mongo dev
+
+```bash
+# URL Mongo dev
+mongodb://localhost:27017/opendb
+```
+
 ## License
 
 MIT License
 
 ---
 
-Made with ♥ by [Rafael Linhares](https://www.linkedin.com/in/rafael-linhares-js/) :wave:
+Made with ♥ by [Carlos Guedez](https://www.linkedin.com/in/cdguedez/) :wave:
