@@ -37,11 +37,16 @@ export const EntriesProvider = ({ children }: EntriesProviderProps) => {
     dispatch({ type: 'REMOVE_ENTRIES', payload: { id } })
   }
 
+  const updateStatusEntry = (entry: Entry) => {
+    dispatch({ type: 'UPDATE_ENTRY', payload: entry })
+  }
+
   return (
     <EntriesContext.Provider value={{
       ...state,
       addNewEntry,
-      removerEntry
+      removerEntry,
+      updateStatusEntry
     }}>
       { children }
     </EntriesContext.Provider>
