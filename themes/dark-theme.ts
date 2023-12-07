@@ -77,10 +77,10 @@ export const darkTheme = createTheme({
             width: '.4rem'
           },
           '&::-webkit-scrollbar-track': {
-            background: blueGrey[500]
+            background: blueGrey[300]
           },
           '&::-webkit-scrollbar-thumb': {
-            background: lightBlue[300]
+            background: blueGrey[500]
           },
           '&::-webkit-scrollbar-thumb:hover': {
             background: '#555'
